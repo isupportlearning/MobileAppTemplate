@@ -1,0 +1,412 @@
+<!doctype html>
+
+<html>
+
+    <head>
+        <title>App title</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <style>
+            @font-face { font-family: FontBlack; src: url(./fonts/Roboto-Black.ttf); }
+            @font-face { font-family: FontBlackItalic; src: url(./fonts/Roboto-BlackItalic.ttf); }
+            @font-face { font-family: FontBold; src: url(./fonts/Roboto-Bold.ttf); }
+            @font-face { font-family: FontBoldItalic; src: url(./fonts/Roboto-BoldItalic.ttf); }
+            @font-face { font-family: FontItalic; src: url(./fonts/Roboto-Italic.ttf); }
+            @font-face { font-family: FontLight; src: url(./fonts/Roboto-Light.ttf); }
+            @font-face { font-family: FontLightItalic; src: url(./fonts/Roboto-LightItalic.ttf); }
+            @font-face { font-family: FontMedium; src: url(./fonts/Roboto-Medium.ttf); }
+            @font-face { font-family: FontMediumItalic; src: url(./fonts/Roboto-MediumItalic.ttf); }
+            @font-face { font-family: FontRegular; src: url(./fonts/Roboto-Regular.ttf); }
+            @font-face { font-family: FontThin; src: url(./fonts/Roboto-Thin.ttf); }
+            @font-face { font-family: FontThinItalic; src: url(./fonts/Roboto-ThinItalic.ttf); }
+            @font-face { font-family: Icons; src: url(./fonts/Font Awesome 5 Free-Solid-900.otf);}
+            
+            * { box-sizing: border-box; }
+            body, html {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                font-family: FontRegular;
+                font-size: 2vh;
+            }
+            
+            .background {
+                position: fixed;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                padding: 0;
+                margin: 0;
+                background: linear-gradient(to bottom, #5ac8fa 0%,#007aff 100%);
+            }
+            
+            .appTitle {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                border-style: none none solid none;
+                border-color: gray;
+                border-width: 1px;
+                background-color: white;
+                font-family: FontBlack;
+                text-align: center;
+                z-index: 1;
+            }
+            
+            .appTitle h1 {
+                margin: 0;
+                padding: 2% 3%;
+                font-family: FontBold;
+            }
+            
+            .appHelp {
+                color: #007AFF;
+                display: flex;
+                position: absolute;
+                height: 100%;
+                right: 0;
+                top: 50%;
+                font-family: FontRegular;
+                font-size: 1.5em;
+                line-height: 100%;
+                align-items: center;
+                transform: translateY( -50% );
+                padding: 0 5%;
+            }
+            
+            .appBack {
+                color: #007AFF;
+                display: flex;
+                position: absolute;
+                height: 100%;
+                left: 0;
+                top: 50%;
+                font-family: FontRegular;
+                font-size: 1.5em;
+                line-height: 100%;
+                align-items: center;
+                transform: translateY( -50% );
+                padding: 0 5%;
+            }
+            
+            .appBack:hover, .appHelp:hover {
+                color: white;
+                background-color: #007AFF;
+            }
+            
+            .appTitleSpace {
+                height: 5em;
+                width: 100%;
+            }
+            
+            .appCopy {
+                position: fixed;
+                bottom: 0;
+                padding: 1% 2%;
+                width: 100%;
+                height: 2.5em;
+                border-style: solid none;
+                border-width: 1px;
+                background-color: white;
+            }
+            
+            .appCopySpace {
+                width: 100%;
+                height: 6.5em;
+            }
+            
+            nav {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-around;
+                font-family: Icons;
+                position: fixed;
+                bottom: 2.5em;
+                left: 0;
+                height: 4em;
+                background: white;
+                border-top-style: solid;
+                border-width: 1px;
+                width: 100%;
+            }
+            
+            nav a {
+                padding-top: 0.1em;
+                font-size: 3em;
+                color: gray;
+            }
+            
+            nav a:hover {
+                color: #007AFF;
+            }
+            
+            .infoCard {
+                position: relative;
+                padding: 1% 2%;
+                width: 95%;
+                margin: 1% auto;
+                background-color: white;
+                border-radius: 15px;
+            }
+            
+            .infoCard img {
+                position: relative;
+                width: 100%;
+                image-rendering: pixelated; 
+                border-radius: 15px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #FF2D55;
+            }
+            
+            .infoCard video {
+                position: relative;
+                width: 100%;
+                image-rendering: pixelated; 
+                border-radius: 15px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #007AFF;
+            }
+            
+            .infoCard h1 {
+                color: #007AFF;
+            }
+            
+            .infoCard h2 {
+                color: #FF2D55;
+            }
+            
+            .appMain {
+                position: relative;
+                padding: 1% 2%;
+                width: 95%;
+                margin: 1% auto;
+
+                background-color: white;
+                border-radius: 15px;
+            }
+            
+            .appMain img {
+                position: absolute;
+                top: 2%;
+                right: 2%;
+                width: 25%;
+                image-rendering: pixelated; 
+                border-radius: 15px;
+                border-width: 3px;
+                border-style: solid;
+                border-color: #007AFF;
+                max-height: 25vh;
+            }
+
+            .appMain h1 {
+                color: #007AFF;
+            }
+            
+            .appMain h2 {
+                color: #FF2D55;
+            }
+            
+            .appModal {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                height: 50%;
+                width: 90%;
+                transform: translate( -50%, -50%);
+                border-radius: 15px;
+                padding: 3%;
+                background-color: white;
+                border-style: solid;
+                border-width: 2px;
+                border-color: dimgray;
+            }
+            
+            .appModal h1, .appModal p {
+                text-align: center;
+            }
+            
+            .appModal h1 {
+                font-size: 2.5em;
+            }
+            
+            .appModal p {
+                font-size: 1.5em;
+            }
+            
+            .appModalClose {
+                position: absolute;
+                bottom: 0;
+                right: 50%;
+                font-size: 2em;
+                border-style: solid none none none;
+                border-width: 1px;
+                border-color: gray;
+                transform: translateX( 50% );
+                width: 100%;
+                text-align: center;
+                color: #007AFF;
+            }
+            
+            .appModalClose:hover {
+                background-color: #007AFF;
+                color: white;
+                border-radius: 0 0 15px 15px;
+            }
+            
+            .appForm {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+            
+            .appForm label {
+                display: inline;
+                line-height: 2em;
+                margin-left: 1em
+            }
+            
+            .appForm input {
+                display: block;
+                margin: 2%; 
+                padding: 2%;
+                width: 98%;
+                font-size: 1.5em;
+                border-style: none none solid none;
+                border-color: dimgray;
+            }
+            
+            .appForm input[type="button"] {
+                display: block;
+                background-color: white;
+                color: #007AFF;
+            }
+            
+            .appForm input[type="button"]:hover {
+                display: block;
+                background-color: #007AFF;
+                color: white;
+            }
+            
+            .appForm input[type="checkbox"] {
+                display: none;
+            }
+            
+            .appForm input[type="checkbox"].ios-switch + div {
+                display: inline-block;
+                float: right;
+                width: 4em;
+                height: 2em;
+                border: 1px solid rgba(0,0,0,.4);
+                border-radius: 999px;
+                background-color: rgba(0, 0, 0, 0.1);
+                transition-duration: .4s;
+                transition-property: background-color, box-shadow;
+                box-shadow: inset 0 0 0 0px rgba(0,0,0,0.4);
+                margin-right: 1em;
+                
+            }
+
+            .appForm input[type="checkbox"].ios-switch:checked + div {
+                width: 4em;
+                background-position: 0 0;
+                background-color: #00e359;
+                border: 1px solid rgba(0, 162, 63,1);
+                box-shadow: inset 0 0 0 10px rgba(0,227,89,1);
+            }
+
+            .appForm input[type="checkbox"].ios-switch + div > div {
+                float: left;
+                width: 1.9em; height: 1.7em;
+                border-radius: inherit;
+                background: #ffffff;
+                transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+                transition-duration: 0.4s;
+                transition-property: transform, background-color, box-shadow;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(0, 0, 0, 0.4);
+                pointer-events: none;
+                margin-top: 1px;
+                margin-left: 1px;
+            }
+
+            .appForm input[type="checkbox"].ios-switch:checked + div > div {
+                transform: translate3d(2em, 0, 0);
+                background-color: #ffffff;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+            }
+            
+            .appForm .output {
+                color: green;
+                font-size: 2em;
+                font-family: FontBoldItalic;
+            }
+
+        </style>
+    </head>
+    
+    <body>
+        <div class="background"></div>
+        <div class="appTitle">
+            <h1>App title</h1>
+            <span id="appHelp" class="appHelp">help</span>
+            <span id="appBack" class="appBack">back</span>
+        </div>
+        <div class="appTitleSpace"></div>
+        <div class="appMain">
+            <img src="img/appBadge.png">
+            <h1>Heading 1</h1>
+            <p>This is a test.</p>
+            <h2>This is a second heading</h2>
+            <p>This is a test</p>
+            <form class="appForm">
+                <input type="number" placeholder="test">
+                <h3>This is an example of checkboxes</h3>
+                <label>Do you agree?<input type="checkbox" class="ios-switch"><div><div></div></div></label>
+                <input type="button" value="ok">
+                <span class="output">Example output</span>
+            </form>
+        </div>
+        
+        <div class="infoCard">
+            <h1>This is an info card</h1>
+            <p>This is an infoCard, it is designed to display text, images and information.</p>
+            <h2>Example image</h2>
+            <p>This is an example image.</p>
+            <img src="img/appBadge.png">
+            <h2>Example video</h2>
+            <p>This is an example video</p>
+            <video src="video/sample.mp4" controls></video>
+        </div>
+        
+        <div class="appModal" id="appModal">
+            <h1>App Section</h1>
+            <p>App text description, that goes on for a very very long time to simulate a paragraph as if it was an actual paragraph that someone might write to describe how an app actually works and provide some obvious instructions for them to use.</p>
+            <span class="appModalClose" id="appModalClose">Close</span>
+        </div>
+        
+        <nav>
+            <a class="fas fa-home"></a>
+            <a class="fas fa-users"></a>
+            <a class="fas fa-globe-americas"></a>
+            <a class="fas fa-graduation-cap"></a>
+        </nav>
+        <div class="appCopy">Copyright I Support Learning, INC, all rights reserved.</div>
+        <div class="appCopySpace"></div>
+    
+        <script>
+                      
+            function showModal() { document.getElementById('appModal').style.display = "block"; }
+            function modalClose() { document.getElementById('appModal').style.display = "none"; }
+            function navBack() { window.history.back(); }
+            document.getElementById('appHelp').addEventListener('click', showModal);
+            document.getElementById('appModalClose').addEventListener('click', modalClose);
+            document.getElementById('appBack').addEventListener('click', navBack);
+        
+        </script>
+        
+    </body>
+    
+</html>
